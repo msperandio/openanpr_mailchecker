@@ -67,6 +67,8 @@ def mail_attachments_download():
                             if filename:
                                 folder_name = clean(subject)
                                 folder_path = os.path.join("attachments", folder_name)
+                                if not os.path.isdir("attachments"):
+                                    os.mkdir("attachments")
                                 if not os.path.isdir(folder_path):
                                     # make a folder for this email (named after the subject)
                                     os.mkdir(folder_path)
