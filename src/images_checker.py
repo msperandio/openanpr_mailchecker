@@ -6,12 +6,14 @@ import os
 def process_images():
     # traverse root directory, and list directories as dirs and files as files
     plate_list = []
+    cntr = 0
     for root, dirs, files in os.walk("attachments"):
         path = root.split(os.sep)
         print((len(path) - 1) * '---', os.path.basename(root))
         for file in files:
             if file.lower().endswith(('.tiff', '.bmp', '.png', '.jpg', '.jpeg')):
-                print(len(path) * '---', file)
+                cntr += 1
+                print(str(cntr) + len(path) * '---', file)
                 output = os.popen("alpr -c eu -p it -n 2 -j " + os.path.join(root, file)).read()
                 try:
                     json_output = json.loads(output)

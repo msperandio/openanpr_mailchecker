@@ -25,7 +25,8 @@ def mail_attachments_download():
     # total number of emails
     messages = int(messages[0])
     print("Messages: ", messages)
-    for i in range(1, messages, 1):
+    for i in range(1, messages+1, 1):
+        print(i)
         # fetch the email message by ID
         # res, msg = imap.fetch(str(i), "(RFC822)")
         res, msg = imap.fetch(str(i), "(RFC822)")
@@ -42,7 +43,6 @@ def mail_attachments_download():
                 From, encoding = decode_header(msg.get("From"))[0]
                 if isinstance(From, bytes):
                     From = From.decode(encoding)
-                print(i)
                 # print("Subject:", subject)
                 # print("From:", From)
                 # if the email message is multipart
@@ -85,7 +85,7 @@ def mail_attachments_download():
                 if content_type == "text/html":
                     # if it's HTML, create a new HTML file and open it in browser
                     folder_name = clean(subject)
-                    folder_path = os.path.join("attachments", folder_name)
+                    folder_path = os.path.join("../attachments", folder_name)
                     if not os.path.isdir(folder_path):
                         # make a folder for this email (named after the subject)
                         os.mkdir(folder_path)
@@ -95,9 +95,14 @@ def mail_attachments_download():
                     open(filepath, "w").write(body)
                     # open in the default browser
                     webbrowser.open(filepath)
-        imap.copy(str(i), '[Gmail]/Trash')
+        copy_resp = imap.copy(str(i), '[Gmail]/Trash')
+        if copy_resp[0] != 'OK':
+            print("Error on moving to trash: "+str(i))
+        # while copy_resp[0] != 'OK':
+        #    copy_resp = imap.copy(str(i), '[Gmail]/Trash')
         # imap.store(str(i), '+FLAGS', r'(\Deleted)')
         # imap.expunge()
+
     # close the connection and logout
     imap.close()
     imap.logout()

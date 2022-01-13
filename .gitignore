@@ -1,3 +1,6 @@
 /attachments/
 /plates/images/*
-/known_plates.json
+/test_images/*
+/test_images
+/data/
+/test_images/
