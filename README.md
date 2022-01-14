@@ -1,18 +1,22 @@
 # openanpr_mailchecker
-A python client that process mail attachement images with openalpr and send results mail.
+A lightweight license plate recognition system based on openalpr checking alerts mail.
 
-todo
-controllo gestione mail credo si perda ancora qualche immagine
+# SETUP
+1 - Install python3 with sqlite3 and imaplib
 
-integrazione grafana con sqlite e sqlite-web
+2 - Install and configure opanlpr following the guides at https://github.com/openalpr/openalpr
 
-invio email alert con nuove targhe
+2 - Run the script: "run.sh"
 
-configurabilità caselle mail
+3 - Run the script: "start_env.sh"
 
-opzione alternativa di controllo server ftp o http
+4 - Enter Grafana at port 3000 and install the plugin https://grafana.com/grafana/plugins/frser-sqlite-datasource/
 
-configurabilità via file
+5 - Setup run.sh as a cronjob at the desired rate
 
-deploy come servizio o docker container con cronjob una volta ogni 12h
-deploy sqlite-web e grafana con nginx insieme a zm
+# TODO
+- send mail alerts with new or unknown plates
+- mail folder and addresses configurable from file or DB
+- alternatives download from ftp or http
+- autmoatic script to deploy the whole system with cronjob at 12h
+- deploy sqlite-web and grafana with nginx (and zm)

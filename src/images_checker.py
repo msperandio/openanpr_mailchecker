@@ -21,7 +21,7 @@ def process_images():
                     results: list = json_output['results']
                     if len(results) > 0:
                         #
-                        os.rename(os.path.join(root, file), os.path.join("plates/images", file))
+                        os.rename(os.path.join(root, file), os.path.join("data/images", file))
                         for result in results:
                             candidates: list = result["candidates"]
                             for c in candidates:
