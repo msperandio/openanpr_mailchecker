@@ -1,6 +1,8 @@
 # openanpr_mailchecker
 A lightweight license plate recognition system based on openalpr checking alerts mail.
 
+![dashboard_1](https://user-images.githubusercontent.com/5609877/149509811-e7f813a1-1b00-4f6a-a2bf-1bae4f45cc9f.png)
+
 # SETUP
 1 - Install python3 with sqlite3 and imaplib
 
