@@ -12,11 +12,11 @@ A lightweight license plate recognition system based on openalpr checking alerts
 
 3 - Run the script: "start_env.sh"
 
-4 - Enter Grafana at port 3000 and install the plugin https://grafana.com/grafana/plugins/frser-sqlite-datasource/
+4 - Enter Grafana at port 3000, install and configure the sqlite plugin https://grafana.com/grafana/plugins/frser-sqlite-datasource/
 
 5 - Setup run.sh as a cronjob at the desired rate
 
 # TODO
 - alternatives download from ftp or http or local
-- autmoatic script to deploy the whole system with cronjob at 12h
 - deploy sqlite-web and grafana with nginx (and zm)
+- - automatic script to deploy the whole system with cronjob at 12h
