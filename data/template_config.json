@@ -1,0 +1,18 @@
+{
+  "email_to_check": {
+    "address": "images@gmail.com",
+    "password": "",
+    "mailbox": "INBOX",
+    "trash": "[Gmail]/Trash",
+    "imap_add":"imap.gmail.com"
+  },
+  "email_for_alerts": {
+    "smtp_add": "smtp.gmail.com",
+    "smtp_port": 465,
+    "sender_address": "sender@gmail.com",
+    "password":"",
+    "receiver_address": "rcvr@gmail.com",
+    "subject" : "",
+    "body" : ""
+  }
+}

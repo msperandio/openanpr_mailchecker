@@ -15,8 +15,6 @@ A lightweight license plate recognition system based on openalpr checking alerts
 5 - Setup run.sh as a cronjob at the desired rate
 
 # TODO
-- send mail alerts with new or unknown plates
-- mail folder and addresses configurable from file or DB
-- alternatives download from ftp or http
+- alternatives download from ftp or http or local
 - autmoatic script to deploy the whole system with cronjob at 12h
 - deploy sqlite-web and grafana with nginx (and zm)
