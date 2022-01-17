@@ -20,14 +20,17 @@ def process_images():
                     # print(json_output)
                     results: list = json_output['results']
                     if len(results) > 0:
-                        #
-                        os.rename(os.path.join(root, file), os.path.join("data/images", file))
+                        images_path = "data/images"
+                        if not os.path.isdir(images_path):
+                            os.mkdir(images_path)
+                        os.rename(os.path.join(root, file), os.path.join(images_path, file))
                         for result in results:
                             candidates: list = result["candidates"]
                             for c in candidates:
                                 plate: dict = {"file": file,
                                                "plate": c["plate"],
                                                "confidence": c["confidence"]}
+                                print(plate)
                                 plate_list.append(plate)
                     else:
                         os.remove(os.path.join(root, file))

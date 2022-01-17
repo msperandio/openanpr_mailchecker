@@ -31,6 +31,8 @@ class AlertMailSender:
 
     def send_alert_mail_with_attachment(self, filename):
         # Open PDF file in binary mode
+        print(self.subject)
+        print(filename)
         with open(filename, "rb") as attachment:
             # Add file as application/octet-stream
             # Email client can usually download this automatically as attachment
