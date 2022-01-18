@@ -14,7 +14,7 @@ class AlertMailSender:
 
         # account credentials
         self.sender_email = config['email_for_alerts']['sender_address']
-        self.receiver_email = config['email_for_alerts']['receiver_address']
+        self.receivers_email = config['email_for_alerts']['receiver_address']
         self.password = config['email_for_alerts']['password']
         self.smtp_add = config['email_for_alerts']['smtp_add']
         self.smtp_port = config['email_for_alerts']['smtp_port']
@@ -22,9 +22,10 @@ class AlertMailSender:
         # Create a multipart message and set headers
         self.message = MIMEMultipart()
         self.message["From"] = self.sender_email
-        self.message["To"] = self.receiver_email
+        self.message["To"] = ",".join(self.receivers_email)
+        # print(self.message["To"])
         self.message["Subject"] = self.subject
-        self.message["Bcc"] = self.receiver_email  # Recommended for mass emails
+        # self.message["Bcc"] = self.receiver_email  # Recommended for mass emails
 
         # Add body to email
         self.message.attach(MIMEText(self.body, "plain"))
@@ -52,4 +53,4 @@ class AlertMailSender:
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(self.smtp_add, self.smtp_port, context=context) as server:
             server.login(self.sender_email, self.password)
-            server.sendmail(self.sender_email, self.receiver_email, text)
+            server.sendmail(self.sender_email, self.receivers_email, text)
