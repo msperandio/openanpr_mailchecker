@@ -28,14 +28,19 @@ class MailDownloader:
         imap.login(self.username, self.password)
 
         status, messages = imap.select(self.mb)
-        # total number of emails
+        # total number of emails        
         messages = int(messages[0])
         print("Messages: ", messages)
-        for i in range(1, messages + 1, 1):
-            print(i)
+        while(messages>0):
+            # for i in range(1, messages + 1, 1):
+            status, messages = imap.select(self.mb)
+            # total number of emails
+            messages = int(messages[0])
+            print(messages)
+            # print(i)
             # fetch the email message by ID
             # res, msg = imap.fetch(str(i), "(RFC822)")
-            res, msg = imap.fetch(str(i), "(RFC822)")
+            res, msg = imap.fetch("1", "(RFC822)")
             for response in msg:
                 if isinstance(response, tuple):
                     # parse a bytes email into a message object
@@ -103,7 +108,8 @@ class MailDownloader:
                         open(filepath, "w").write(body)
                         # open in the default browser
                         webbrowser.open(filepath)
-            copy_resp = imap.copy(str(i), self.trash)
+            # copy_resp = imap.copy(str(i), self.trash)
+            copy_resp = imap.copy("1", self.trash)
             if copy_resp[0] != 'OK':
                 print("Error on moving to trash: " + str(i))
 
