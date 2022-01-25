@@ -19,4 +19,4 @@ A lightweight license plate recognition system based on openalpr checking alerts
 # TODO
 - alternatives download from ftp or http or local
 - deploy sqlite-web and grafana with nginx (and zm)
-- - automatic script to deploy the whole system with cronjob at 12h
+- automatic script to deploy the whole system with cronjob at 12h
